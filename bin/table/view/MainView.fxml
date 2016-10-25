@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane prefHeight="800.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Students">
+               <content>
+                  <fx:include source="StudentTab.fxml" />
+               </content>
+          </Tab>
+          <Tab text="Visitors">
+               <content>
+                  <fx:include source="VisitorTab.fxml" />
+               </content>
+          </Tab>
+          <Tab text="Members">
+               <content>
+                  <fx:include source="MemberTab.fxml" />
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

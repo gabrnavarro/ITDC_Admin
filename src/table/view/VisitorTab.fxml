@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TableView fx:id="VisitorTable" prefHeight="800.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Image"/>
+          <TableColumn editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="First Name" />
+          <TableColumn editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Last Name" />
+            <TableColumn editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Middle Name" />
+            <TableColumn editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Purpose" />
+            <TableColumn editable="false" minWidth="-Infinity" prefWidth="200.0" sortable="false" text="Organization" />
+            <TableColumn editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Designation" />
+            <TableColumn editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Office to Visit" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
