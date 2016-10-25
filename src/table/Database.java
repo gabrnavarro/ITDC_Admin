@@ -58,5 +58,34 @@ public class Database {
 			System.out.println("Failed to make connection!");
 		}
 	}
+	
+	public void getStudents() throws SQLException{
+		Statement st = db.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM Students");
+		while (rs.next())
+		{
+		   System.out.print("Column 1 returned ");
+		   System.out.println(rs.getString(1));
+		   System.out.println(rs.getString(2));
+		   System.out.println(rs.getInt(3));
+		} rs.close();
+		st.close();
+		
+	}
+	
+	public void getVisitors() throws SQLException{
+		Statement st = db.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM Visitors");
+		while (rs.next())
+		{
+		   System.out.print("Column 1 returned ");
+		   System.out.println(rs.getString(1)); //prints out query strings
+		   System.out.println(rs.getString(2));
+		   System.out.println(rs.getString(3));
+		   byte[] image = rs.getBytes(8);  	//gets the images in byte form. find a way to display the bytes using fxml
+		} rs.close();
+		st.close();
+		
+	}
 
 }
