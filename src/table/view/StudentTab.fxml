@@ -4,13 +4,11 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-
-<BorderPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="table.view.StudentTabController">
    <center>
       <TableView fx:id="StudentTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" BorderPane.alignment="CENTER">
         <columns>
-            <TableColumn fx:id="StudentImage" editable="false" minWidth="-Infinity" prefWidth="225.0" sortable="false" text="Image"/>
+            <TableColumn fx:id="StudentImage" editable="false" minWidth="-Infinity" prefWidth="225.0" sortable="false" text="Image" />
           <TableColumn fx:id="StudentFirstName" editable="false" minWidth="-Infinity" prefWidth="225.0" sortable="false" text="First Name" />
           <TableColumn fx:id="StudentLastName" editable="false" minWidth="-Infinity" prefWidth="225.0" sortable="false" text="Last Name" />
             <TableColumn fx:id="StudentNumber" editable="false" minWidth="-Infinity" prefWidth="225.0" sortable="false" text="Student Number" />

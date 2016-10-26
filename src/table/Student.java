@@ -6,10 +6,10 @@ public class Student {
 	public int StudentNumber;
 	public Byte Image;
 	
-	Student(String firstname, String lastname, int studentnumber, Byte img){
-		FirstName = firstname;
-		LastName = lastname;
-		StudentNumber = studentnumber;
-		Image = img;
+	public Student(String firstname, String lastname, int studentnumber/*, Byte img*/){
+		this.FirstName = firstname;
+		this.LastName = lastname;
+		this.StudentNumber = studentnumber;
+		//Image = img;
 	}
 }
