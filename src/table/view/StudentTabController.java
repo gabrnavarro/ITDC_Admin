@@ -52,9 +52,9 @@ public class StudentTabController implements Initializable{
 		}
 	
 
-		//StudentFirstName.setCellValueFactory(new PropertyValueFactory<Student,String>("StudentFirstName"));
-		//StudentLastName.setCellValueFactory(new PropertyValueFactory<Student,String>("StudentLastName"));
-		//StudentNumber.setCellValueFactory(new PropertyValueFactory<Student,Integer>("StudentNumber"));
+		StudentFirstName.setCellValueFactory(new PropertyValueFactory<Student,String>("FirstName"));
+		StudentLastName.setCellValueFactory(new PropertyValueFactory<Student,String>("LastName"));
+		StudentNumber.setCellValueFactory(new PropertyValueFactory<Student,Integer>("StudentNumber"));
 		StudentTable.setItems(null);
 		//System.out.print(data);
 		StudentTable.setItems(data);
