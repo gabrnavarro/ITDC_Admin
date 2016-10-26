@@ -25,7 +25,7 @@ public class StudentTabController implements Initializable{
     private TableColumn<Student, String> StudentLastName;
     @FXML 
     private TableColumn<Student, Integer> StudentNumber;
-    public ObservableList<Student> data;
+    private ObservableList<Student> data;
     private Database dc;
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
