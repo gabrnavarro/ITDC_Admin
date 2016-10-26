@@ -44,15 +44,19 @@ public class StudentTabController implements Initializable{
 				System.out.println(rs.getString(1));
 				System.out.println(rs.getString(2));
 				System.out.println(rs.getString(3));
+				
 				data.add(new Student(rs.getString(1),rs.getString(2),rs.getInt(3)));
 			}
 		}catch(SQLException ex){
 			System.err.println("Error"+ex);
 		}
-		StudentFirstName.setCellValueFactory(new PropertyValueFactory<Student,String>("StudentFirstName"));
-		StudentLastName.setCellValueFactory(new PropertyValueFactory<Student,String>("StudentLastName"));
-		StudentNumber.setCellValueFactory(new PropertyValueFactory<Student,Integer>("StudentNumber"));
+	
+
+		//StudentFirstName.setCellValueFactory(new PropertyValueFactory<Student,String>("StudentFirstName"));
+		//StudentLastName.setCellValueFactory(new PropertyValueFactory<Student,String>("StudentLastName"));
+		//StudentNumber.setCellValueFactory(new PropertyValueFactory<Student,Integer>("StudentNumber"));
 		StudentTable.setItems(null);
+		//System.out.print(data);
 		StudentTable.setItems(data);
 	}
     
