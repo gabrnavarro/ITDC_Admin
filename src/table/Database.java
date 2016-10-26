@@ -1,7 +1,11 @@
 package table;
+
+import java.util.List;
 import java.io.*;
 import java.sql.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,21 +63,21 @@ public class Database {
 		}
 	}
 	
-	public void getStudents() throws SQLException{
+	public void getStudents() throws SQLException{		
+		ObservableList<Student> students = new FXCollections.observableArrayList<Student>();
 		Statement st = db.createStatement();
 		ResultSet rs = st.executeQuery("SELECT * FROM Students");
 		while (rs.next())
 		{
-		   System.out.print("Column 1 returned ");
-		   System.out.println(rs.getString(1));
-		   System.out.println(rs.getString(2));
-		   System.out.println(rs.getInt(3));
+			System.out.println("Outputting from students");
+			students.add(new Student(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getByte(4)));
 		} rs.close();
 		st.close();
 		
 	}
 	
 	public void getVisitors() throws SQLException{
+		List<Visitor> visitors = new ObservableList<Visitor>();
 		Statement st = db.createStatement();
 		ResultSet rs = st.executeQuery("SELECT * FROM Visitors");
 		while (rs.next())
@@ -82,7 +86,7 @@ public class Database {
 		   System.out.println(rs.getString(1)); //prints out query strings
 		   System.out.println(rs.getString(2));
 		   System.out.println(rs.getString(3));
-		   byte[] image = rs.getBytes(8);  	//gets the images in byte form. find a way to display the bytes using fxml
+		   byte[] image = rs.getBytes(7);  	//gets the images in byte form. find a way to display the bytes using fxml
 		} rs.close();
 		st.close();
 		
