@@ -1,6 +1,21 @@
 package table;
 
+import java.applet.Applet;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
+
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 
 public class Database {
 	public Connection db = null;
@@ -46,6 +61,7 @@ public class Database {
 		}
 		return db;
 	}
+	
 	
 	
 

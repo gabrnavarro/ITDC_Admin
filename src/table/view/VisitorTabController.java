@@ -13,10 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import table.Convert;
 import table.Database;
 import table.Visitor;
 
-public class VisitorTabController implements Initializable{
+public class VisitorTabController extends Convert implements Initializable{
 	@FXML 
 	private TableView<Visitor> VisitorTable;
     @FXML 
@@ -45,10 +47,12 @@ public class VisitorTabController implements Initializable{
 		try{
 			Connection conn = dc.Connect();
 			data = FXCollections.observableArrayList();
-			ResultSet rs = conn.createStatement().executeQuery("SELECT firstname,lastname,middlename, purpose,organization,office FROM visitors");
+			ResultSet rs = conn.createStatement().executeQuery("SELECT firstname,lastname,middlename, purpose,organization,office, image FROM visitors");
 			while(rs.next()){
+				byte[] rawimage = rs.getBytes(7);
+				Image image = convert(rawimage, 300, 300);
 				
-				data.add(new Visitor(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)));
+				data.add(new Visitor(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), image));
 			}
 		}catch(SQLException ex){
 			System.err.println("Error"+ex);

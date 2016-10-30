@@ -1,6 +1,7 @@
 package table;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.image.Image;
 
 public class Visitor {
 	public final SimpleStringProperty FirstName;
@@ -9,9 +10,10 @@ public class Visitor {
 	public final SimpleStringProperty Purpose;
 	public final SimpleStringProperty Organization;
 	public final SimpleStringProperty Office;
+	public final Image QueriedImage;
 	//public final Byte Image;
 	
-	public Visitor(String fn, String ln, String mn, String pr, String or, String of/*, Byte img*/){
+	public Visitor(String fn, String ln, String mn, String pr, String or, String of, Image img){
 		super();
 		this.FirstName = new SimpleStringProperty(fn);
 		this.LastName = new SimpleStringProperty(ln);
@@ -19,6 +21,7 @@ public class Visitor {
 		this.Purpose = new SimpleStringProperty(pr);
 		this.Organization = new SimpleStringProperty(or);
 		this.Office = new SimpleStringProperty(of);
+		this.QueriedImage = img;
 		//Image = img;
 	}
 
