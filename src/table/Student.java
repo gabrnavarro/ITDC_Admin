@@ -31,4 +31,8 @@ public class Student {
 	public int getStudentNumber() {
 		return StudentNumber.get();
 	}	
+	
+	public Image getImage(){
+		return QueriedImage;
+	}
 }

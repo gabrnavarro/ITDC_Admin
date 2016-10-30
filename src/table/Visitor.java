@@ -48,5 +48,9 @@ public class Visitor {
 	public String getOffice() {
 		return Office.get();
 	}
+	
+	public Image getImage(){
+		return QueriedImage;
+	}
 
 }

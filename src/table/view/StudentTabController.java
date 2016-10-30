@@ -27,6 +27,8 @@ public class StudentTabController extends Convert implements Initializable{
     private TableColumn<Student, String> StudentLastName;
     @FXML 
     private TableColumn<Student, Integer> StudentNumber;
+    @FXML
+    private TableColumn<Student, Image> StudentImage;
     private ObservableList<Student> data;
     private Database dc;
 	@Override
@@ -58,6 +60,7 @@ public class StudentTabController extends Convert implements Initializable{
 		StudentFirstName.setCellValueFactory(new PropertyValueFactory<Student,String>("FirstName"));
 		StudentLastName.setCellValueFactory(new PropertyValueFactory<Student,String>("LastName"));
 		StudentNumber.setCellValueFactory(new PropertyValueFactory<Student,Integer>("StudentNumber"));
+		StudentImage.setCellValueFactory(new PropertyValueFactory<Student,Image>("Image"));
 		StudentTable.setItems(null);
 		//System.out.print(data);
 		StudentTable.setItems(data);
