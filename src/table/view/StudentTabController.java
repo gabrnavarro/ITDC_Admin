@@ -43,6 +43,7 @@ public class StudentTabController implements Initializable{
 			while(rs.next()){
 				System.out.println(rs.getString(1));
 				System.out.println(rs.getString(2));
+				System.out.println("Hello");
 				System.out.println(rs.getString(3));
 				
 				data.add(new Student(rs.getString(1),rs.getString(2),rs.getInt(3)));

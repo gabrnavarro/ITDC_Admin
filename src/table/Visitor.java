@@ -12,6 +12,7 @@ public class Visitor {
 	//public final Byte Image;
 	
 	public Visitor(String fn, String ln, String mn, String pr, String or, String of/*, Byte img*/){
+		super();
 		this.FirstName = new SimpleStringProperty(fn);
 		this.LastName = new SimpleStringProperty(ln);
 		this.MiddleName = new SimpleStringProperty(mn);
