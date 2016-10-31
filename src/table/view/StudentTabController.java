@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import table.Convert;
 import table.Database;
 import table.Student;
@@ -28,7 +29,7 @@ public class StudentTabController extends Convert implements Initializable{
     @FXML 
     private TableColumn<Student, Integer> StudentNumber;
     @FXML
-    private TableColumn<Student, Image> StudentImage;
+    private TableColumn<Student, ImageView> StudentImage;
     private ObservableList<Student> data;
     private Database dc;
 	@Override
@@ -50,7 +51,10 @@ public class StudentTabController extends Convert implements Initializable{
 				System.out.println("Hello");
 				System.out.println(rs.getString(3));
 				Image image = convert(rs.getBytes(4), 300, 300);
-				data.add(new Student(rs.getString(1),rs.getString(2),rs.getInt(3), image));
+				ImageView imageview = new ImageView(image);
+				imageview.setFitHeight(100);
+				imageview.setFitWidth(100);
+				data.add(new Student(rs.getString(1),rs.getString(2),rs.getInt(3), imageview));
 			}
 		}catch(SQLException ex){
 			System.err.println("Error"+ex);
@@ -60,7 +64,7 @@ public class StudentTabController extends Convert implements Initializable{
 		StudentFirstName.setCellValueFactory(new PropertyValueFactory<Student,String>("FirstName"));
 		StudentLastName.setCellValueFactory(new PropertyValueFactory<Student,String>("LastName"));
 		StudentNumber.setCellValueFactory(new PropertyValueFactory<Student,Integer>("StudentNumber"));
-		StudentImage.setCellValueFactory(new PropertyValueFactory<Student,Image>("Image"));
+		StudentImage.setCellValueFactory(new PropertyValueFactory<Student,ImageView>("Image"));
 		StudentTable.setItems(null);
 		//System.out.print(data);
 		StudentTable.setItems(data);

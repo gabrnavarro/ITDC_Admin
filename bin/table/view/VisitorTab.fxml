@@ -8,7 +8,7 @@
    <center>
       <TableView fx:id="VisitorTable" prefHeight="800.0" prefWidth="900.0" BorderPane.alignment="CENTER">
         <columns>
-            <TableColumn editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Image" />
+            <TableColumn fx:id="VisitorImage" editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Image" />
           <TableColumn fx:id="VisitorFirstName" editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="First Name" />
           <TableColumn fx:id="VisitorLastName" editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Last Name" />
             <TableColumn fx:id="VisitorMiddleName" editable="false" minWidth="-Infinity" prefWidth="100.0" sortable="false" text="Middle Name" />

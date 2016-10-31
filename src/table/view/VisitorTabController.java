@@ -14,8 +14,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import table.Convert;
 import table.Database;
+import table.Student;
 import table.Visitor;
 
 public class VisitorTabController extends Convert implements Initializable{
@@ -33,6 +35,9 @@ public class VisitorTabController extends Convert implements Initializable{
     private TableColumn<Visitor, String> VisitorOrganization;
     @FXML 
     private TableColumn<Visitor, String> VisitorOffice;
+    @FXML
+    private TableColumn<Visitor, ImageView> VisitorImage;
+    
     private ObservableList<Visitor> data;
     private Database dc;
 	@Override
@@ -51,8 +56,10 @@ public class VisitorTabController extends Convert implements Initializable{
 			while(rs.next()){
 				byte[] rawimage = rs.getBytes(7);
 				Image image = convert(rawimage, 300, 300);
-				
-				data.add(new Visitor(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), image));
+				ImageView imageview= new ImageView(image);
+				imageview.setFitHeight(100);
+				imageview.setFitWidth(100);
+				data.add(new Visitor(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), imageview));
 			}
 		}catch(SQLException ex){
 			System.err.println("Error"+ex);
@@ -65,6 +72,7 @@ public class VisitorTabController extends Convert implements Initializable{
 		VisitorPurpose.setCellValueFactory(new PropertyValueFactory<Visitor,String>("Purpose"));
 		VisitorOrganization.setCellValueFactory(new PropertyValueFactory<Visitor,String>("Organization"));
 		VisitorOffice.setCellValueFactory(new PropertyValueFactory<Visitor,String>("Office"));
+		VisitorImage.setCellValueFactory(new PropertyValueFactory<Visitor,ImageView>("Image"));
 		VisitorTable.setItems(null);
 		//System.out.print(data);
 		VisitorTable.setItems(data);
