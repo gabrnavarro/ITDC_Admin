@@ -1,8 +1,8 @@
 package table;
 
+import java.sql.Timestamp;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Student {
@@ -10,15 +10,15 @@ public class Student {
 	public final SimpleStringProperty LastName;
 	public final SimpleIntegerProperty StudentNumber;
 	public final ImageView QueriedImage;
-	//public final Byte Image;
+	public final Timestamp Time;
 	
-	public Student(String firstname, String lastname, int studentnumber, ImageView imageview){
+	public Student(String firstname, String lastname, int studentnumber, ImageView imageview,Timestamp time){
 		super();
 		this.FirstName = new SimpleStringProperty(firstname);
 		this.LastName = new SimpleStringProperty(lastname);
 		this.StudentNumber = new SimpleIntegerProperty(studentnumber);
 		this.QueriedImage = imageview;
-		//Image = img;
+		this.Time=time;
 	}
 
 	public String getFirstName() {
@@ -35,5 +35,8 @@ public class Student {
 	
 	public ImageView getImage(){
 		return QueriedImage;
+	}
+	public Timestamp getTime(){
+		return Time;
 	}
 }

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -34,9 +35,13 @@ public class VisitorTabController extends Convert implements Initializable{
     @FXML 
     private TableColumn<Visitor, String> VisitorOrganization;
     @FXML 
+    private TableColumn<Visitor, String> VisitorDes;
+    @FXML 
     private TableColumn<Visitor, String> VisitorOffice;
     @FXML
     private TableColumn<Visitor, ImageView> VisitorImage;
+    @FXML
+    private TableColumn<Visitor,Timestamp > VisitorTime;
     
     private ObservableList<Visitor> data;
     private Database dc;
@@ -52,14 +57,14 @@ public class VisitorTabController extends Convert implements Initializable{
 		try{
 			Connection conn = dc.Connect();
 			data = FXCollections.observableArrayList();
-			ResultSet rs = conn.createStatement().executeQuery("SELECT firstname,lastname,middlename, purpose,organization,office, image FROM visitors");
+			ResultSet rs = conn.createStatement().executeQuery("SELECT firstname,lastname,middlename, purpose,organization,office, image,timestamp FROM visitors");
 			while(rs.next()){
 				byte[] rawimage = rs.getBytes(7);
 				Image image = convert(rawimage, 300, 300);
 				ImageView imageview= new ImageView(image);
 				imageview.setFitHeight(100);
 				imageview.setFitWidth(100);
-				data.add(new Visitor(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), imageview));
+				data.add(new Visitor(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), imageview,rs.getTimestamp(8)));
 			}
 		}catch(SQLException ex){
 			System.err.println("Error"+ex);
@@ -73,8 +78,8 @@ public class VisitorTabController extends Convert implements Initializable{
 		VisitorOrganization.setCellValueFactory(new PropertyValueFactory<Visitor,String>("Organization"));
 		VisitorOffice.setCellValueFactory(new PropertyValueFactory<Visitor,String>("Office"));
 		VisitorImage.setCellValueFactory(new PropertyValueFactory<Visitor,ImageView>("Image"));
+		VisitorTime.setCellValueFactory(new PropertyValueFactory<Visitor,Timestamp>("Time"));
 		VisitorTable.setItems(null);
-		//System.out.print(data);
 		VisitorTable.setItems(data);
 	}
     

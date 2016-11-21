@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -30,6 +32,8 @@ public class StudentTabController extends Convert implements Initializable{
     private TableColumn<Student, Integer> StudentNumber;
     @FXML
     private TableColumn<Student, ImageView> StudentImage;
+    @FXML
+    private TableColumn<Student,Timestamp > StudentTime;
     private ObservableList<Student> data;
     private Database dc;
 	@Override
@@ -44,7 +48,7 @@ public class StudentTabController extends Convert implements Initializable{
 		try{
 			Connection conn = dc.Connect();
 			data = FXCollections.observableArrayList();
-			ResultSet rs = conn.createStatement().executeQuery("SELECT firstname,lastname,studentnumber, image FROM students");
+			ResultSet rs = conn.createStatement().executeQuery("SELECT firstname,lastname,studentnumber, image,timestamp FROM students");
 			while(rs.next()){
 				System.out.println(rs.getString(1));
 				System.out.println(rs.getString(2));
@@ -54,7 +58,7 @@ public class StudentTabController extends Convert implements Initializable{
 				ImageView imageview = new ImageView(image);
 				imageview.setFitHeight(100);
 				imageview.setFitWidth(100);
-				data.add(new Student(rs.getString(1),rs.getString(2),rs.getInt(3), imageview));
+				data.add(new Student(rs.getString(1),rs.getString(2),rs.getInt(3), imageview,rs.getTimestamp(5)));
 			}
 		}catch(SQLException ex){
 			System.err.println("Error"+ex);
@@ -65,8 +69,8 @@ public class StudentTabController extends Convert implements Initializable{
 		StudentLastName.setCellValueFactory(new PropertyValueFactory<Student,String>("LastName"));
 		StudentNumber.setCellValueFactory(new PropertyValueFactory<Student,Integer>("StudentNumber"));
 		StudentImage.setCellValueFactory(new PropertyValueFactory<Student,ImageView>("Image"));
+		StudentTime.setCellValueFactory(new PropertyValueFactory<Student,Timestamp>("Time"));
 		StudentTable.setItems(null);
-		//System.out.print(data);
 		StudentTable.setItems(data);
 	}
     
